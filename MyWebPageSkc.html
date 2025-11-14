@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hima PC — A funny kid</title>
+<meta name="description" content="Hima PC — A funny kid. Playful personal page with projects, skills, and contact." />
+<style>
+  :root{
+    --bg:#fffdf7;
+    --card:#fff;
+    --muted:#6b6b6b;
+    --accent:#ff8c42;
+    --accent-2:#ffd6a5;
+    --glass: rgba(255,255,255,0.6);
+    --radius:14px;
+    --maxw:940px;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color:#222;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    min-height:100%;
+    background: linear-gradient(180deg, #fffdf7 0%, #fff3e8 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:var(--maxw);
+  }
+
+  header.hero{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.85));
+    padding:26px;
+    border-radius:var(--radius);
+    box-shadow: 0 10px 30px rgba(36,36,36,0.06);
+    margin-bottom:18px;
+  }
+
+  .avatar{
+    width:120px;
+    height:120px;
+    background:linear-gradient(135deg,var(--accent),#ffb07a);
+    border-radius:18px;
+    flex:0 0 120px;
+    display:grid;
+    place-items:center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  }
+  .avatar svg{width:92px;height:92px;filter:drop-shadow(0 6px 12px rgba(0,0,0,0.06))}
+
+  .intro{
+    flex:1;
+    min-width:0;
+  }
+  h1{
+    margin:0 0 6px 0;
+    font-size:28px;
+    line-height:1.05;
+    letter-spacing:-0.3px;
+  }
+  .tag{
+    display:inline-block;
+    margin-top:6px;
+    padding:6px 10px;
+    background:var(--accent-2);
+    border-radius:999px;
+    font-weight:600;
+    color:#4a2a00;
+    font-size:13px;
+  }
+  p.lead{
+    margin:12px 0 0;
+    color:var(--muted);
+    font-size:15px;
+  }
+
+  .controls{
+    display:flex;
+    gap:10px;
+    margin-top:14px;
+  }
+  .btn{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    padding:8px 12px;
+    border-radius:10px;
+    border:0;
+    cursor:pointer;
+    font-weight:600;
+    font-size:14px;
+  }
+  .btn-primary{
+    background:linear-gradient(90deg,var(--accent),#ff6b35);
+    color:white;
+    box-shadow: 0 6px 18px rgba(255,120,55,0.18);
+  }
+  .btn-ghost{
+    background:transparent;
+    color:#4a2a00;
+    border:1px solid rgba(74,42,0,0.06);
+  }
+
+  main.grid{
+    display:grid;
+    grid-template-columns: 1fr 320px;
+    gap:18px;
+    margin-top:10px;
+  }
+
+  section.card{
+    background:var(--card);
+    padding:18px;
+    border-radius:12px;
+    box-shadow: 0 6px 24px rgba(55,55,55,0.04);
+  }
+
+  .about p{margin:0;color:var(--muted);line-height:1.5}
+  .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .skill{
+    background:linear-gradient(90deg,#fff8ef, #fff1e4);
+    border-radius:999px;
+    padding:6px 10px;
+    font-weight:600;
+    font-size:13px;
+    color:#5a2f00;
+    box-shadow: 0 4px 10px rgba(255,140,66,0.06);
+  }
+
+  .projects-list{display:grid;gap:12px}
+  .project{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+  .project .thumb{
+    width:64px;height:64px;border-radius:10px;
+    background:linear-gradient(135deg,#fff, #fffaff);
+    display:grid;place-items:center;
+    font-weight:700;color:var(--accent);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+    flex:0 0 64px;
+  }
+  .project .meta{font-size:14px}
+  .project .meta b{display:block;font-weight:700}
+  .project .meta small{color:var(--muted)}
+
+  aside.right{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .contact-card .contact-item{display:flex;align-items:center;gap:12px;padding:8px;border-radius:10px}
+  .contact-item .i{width:40px;height:40px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent-2),#fff)}
+  .contact-item a{font-weight:700;color:#4a2a00;text-decoration:none}
+  .tiny{font-size:12px;color:var(--muted)}
+
+  footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+  /* responsive */
+  @media (max-width:920px){
+    main.grid{grid-template-columns:1fr; }
+    .hero{flex-direction:row;align-items:center}
+  }
+  @media (max-width:520px){
+    header.hero{flex-direction:column;align-items:stretch;gap:14px}
+    .avatar{margin:0 auto}
+    h1{font-size:22px}
+  }
+
+  /* small playful accent animation */
+  .wobble{display:inline-block;transform-origin:center;animation:wob 4s ease-in-out infinite}
+  @keyframes wob{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(5deg)}}
+</style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <header class="hero" aria-label="Hima PC hero">
+      <div class="avatar" aria-hidden="true">
+        <!-- simple playful avatar SVG -->
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar">
+          <rect rx="14" width="120" height="120" fill="white" />
+          <g transform="translate(8,10)">
+            <circle cx="46" cy="46" r="32" fill="#fff6e9" stroke="#ffd6a5" stroke-width="3"/>
+            <circle cx="34" cy="40" r="5" fill="#3b2b2b"/>
+            <circle cx="58" cy="40" r="5" fill="#3b2b2b"/>
+            <path d="M32 52 q14 10 28 0" fill="none" stroke="#3b2b2b" stroke-width="3" stroke-linecap="round"/>
+            <rect x="22" y="68" width="48" height="14" rx="4" fill="#fff8f0"/>
+            <circle cx="34" cy="44" r="2" fill="#fff"/>
+            <circle cx="58" cy="44" r="2" fill="#fff"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="intro">
+        <h1>Hima PC <span class="wobble">😄</span></h1>
+        <div class="tag">A funny kid</div>
+        <p class="lead">Hi — I'm Hima! I make people laugh, invent silly projects, and collect the best jokes in my pocket. This little corner shows what I tinker with.</p>
+
+        <div class="controls" role="toolbar" aria-label="Hero actions">
+          <button class="btn btn-primary" id="downloadResumeBtn" title="Download a short resume">Download Resume</button>
+          <button class="btn btn-ghost" id="emailBtn">Email Me</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card about" aria-labelledby="about-heading">
+        <h2 id="about-heading">About</h2>
+        <p>
+          Hima PC is a playful kid who loves jokes, drawing silly characters, making short videos, and trying tiny coding projects. Hima believes the world needs more giggles and colorful paper airplanes.
+        </p>
+
+        <div style="margin-top:14px">
+          <h3 style="margin:0 0 8px 0">Skills & Interests</h3>
+          <div class="skills" aria-hidden="false">
+            <div class="skill">Jokes</div>
+            <div class="skill">Storytelling</div>
+            <div class="skill">Drawing</div>
+            <div class="skill">Paper Airplanes</div>
+            <div class="skill">Kid Coding</div>
+            <div class="skill">Making Videos</div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <h3 style="margin:0 0 8px 0">Favorite Quote</h3>
+          <blockquote style="margin:0;color:var(--muted);font-style:italic;">“Laugh a lot. Build a little. Share the candy.”</blockquote>
+        </div>
+
+        <div style="margin-top:18px">
+          <h3 style="margin:0 0 10px 0">Projects</h3>
+          <div class="projects-list">
+            <div class="project">
+              <div class="thumb">JOK</div>
+              <div class="meta">
+                <b>Joke Jar</b>
+                <small>A tiny app that tells a random kid-friendly joke when you shake it.</small>
+              </div>
+            </div>
+
+            <div class="project">
+              <div class="thumb">✈️</div>
+              <div class="meta">
+                <b>Paper Flight Club</b>
+                <small>Paper airplane designs and a scoreboard to see which one flies farthest.</small>
+              </div>
+            </div>
+
+            <div class="project">
+              <div class="thumb">🎬</div>
+              <div class="meta">
+                <b>Mini Skits</b>
+                <small>Short, silly videos made with friends — usually less than 30 seconds.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right">
+        <section class="card contact-card" aria-labelledby="contact-heading">
+          <h3 id="contact-heading">Contact</h3>
+
+          <div class="contact-item" title="Email">
+            <div class="i">✉️</div>
+            <div>
+              <a href="mailto:hima@example.com" id="mailtoLink">hima@example.com</a>
+              <div class="tiny">Or click the button to compose an email</div>
+            </div>
+          </div>
+
+          <div style="height:8px"></div>
+
+          <div class="contact-item" title="Socials">
+            <div class="i">🔗</div>
+            <div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <a href="#" aria-label="Hima's GitHub (placeholder)">GitHub</a>
+                <a href="#" aria-label="Hima's YouTube (placeholder)">YouTube</a>
+                <a href="#" aria-label="Hima's Instagram (placeholder)">Instagram</a>
+              </div>
+              <div class="tiny">Placeholders — update with real profiles when ready</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="fun-heading">
+          <h3 id="fun-heading">Fun Stuff</h3>
+          <p class="tiny">Want a joke? Click the button.</p>
+          <button class="btn btn-primary" id="jokeBtn" style="width:100%">Tell me a joke</button>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:6px 0 8px 0">Theme</h4>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-ghost" id="themeLight">Light</button>
+              <button class="btn btn-ghost" id="themeSunny">Sunny</button>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      Made with giggles • Hima PC — © <span id="year"></span>
+    </footer>
+  </div>
+
+<script>
+  // small script: resume download, jokes, theme, email
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const resumeText = [
+    "Hima PC",
+    "A funny kid",
+    "",
+    "About:",
+    "I like jokes, drawing, making short videos, and trying tiny coding ideas.",
+    "",
+    "Skills:",
+    "- Making people laugh",
+    "- Drawing silly characters",
+    "- Building tiny projects",
+    "",
+    "Projects:",
+    "- Joke Jar — random kid-friendly jokes",
+    "- Paper Flight Club — paper airplane designs",
+    "- Mini Skits — short comedic videos",
+    "",
+    "Contact: hima@example.com",
+    "",
+    "Fun fact: Favorite snack is anything crunchy!"
+  ].join("\\n");
+
+  function downloadFile(filename, content){
+    const blob = new Blob([content], {type:'text/plain'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  document.getElementById('downloadResumeBtn').addEventListener('click', ()=>{
+    downloadFile('Hima-PC-Resume.txt', resumeText);
+  });
+
+  document.getElementById('emailBtn').addEventListener('click', ()=>{
+    window.location.href = 'mailto:hima@example.com?subject=Hi%20Hima!';
+  });
+
+  // jokes (kid-friendly)
+  const jokes = [
+    "Why did the cookie go to the doctor? Because it felt crummy!",
+    "What do you call a sleeping bull? A bulldozer!",
+    "How do you make a tissue dance? Put a little boogie in it!",
+    "Why did the banana go to the party? Because it had appeal!",
+    "What do you call an alligator wearing a vest? An investigator!"
+  ];
+
+  document.getElementById('jokeBtn').addEventListener('click', ()=>{
+    const j = jokes[Math.floor(Math.random()*jokes.length)];
+    alert(j);
+  });
+
+  // theme buttons
+  document.getElementById('themeLight').addEventListener('click', ()=>{
+    document.documentElement.style.setProperty('--bg','#fffdf7');
+    document.documentElement.style.setProperty('--accent','#ff8c42');
+  });
+  document.getElementById('themeSunny').addEventListener('click', ()=>{
+    document.documentElement.style.setProperty('--bg','#fff7f0');
+    document.documentElement.style.setProperty('--accent','#ffb347');
+  });
+
+  // mailto link fallback: copy to clipboard message if mail fails
+  document.getElementById('mailtoLink').addEventListener('click', function(e){
+    // allow default behavior (opening mail client). Additionally offer copy
+    // No blocking or extra confirmation to keep experience simple.
+    setTimeout(()=>{ /* noop */ }, 0);
+  });
+
+  // small accessibility: focus outline for keyboard users
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Tab') document.body.classList.add('show-focus');
+  });
+</script>
+</body>
+</html>
